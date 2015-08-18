@@ -1,1 +1,95 @@
 ## Installation from Bare Metal
+
+## get hardware specs
+
+[root@ip-172-31-34-57 ~]# cat /proc/cpuinfo
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Xeon(R) CPU E5-2650 0 @ 2.00GHz
+stepping	: 7
+cpu MHz		: 1800.000
+cache size	: 20480 KB
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu de tsc msr pae cx8 sep cmov pat clflush mmx fxsr sse sse2 ss ht syscall nx lm rep_good aperfmperf unfair_spinlock pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes hypervisor lahf_lm arat epb xsaveopt pln pts dts
+bogomips	: 3600.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 45
+model name	: Intel(R) Xeon(R) CPU E5-2650 0 @ 2.00GHz
+stepping	: 7
+cpu MHz		: 1800.000
+cache size	: 20480 KB
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu de tsc msr pae cx8 sep cmov pat clflush mmx fxsr sse sse2 ss ht syscall nx lm rep_good aperfmperf unfair_spinlock pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes hypervisor lahf_lm arat epb xsaveopt pln pts dts
+bogomips	: 3600.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+[root@ip-172-31-34-57 ~]# 
+
+
+
+[root@ip-172-31-34-57 ~]# free -m
+             total       used       free     shared    buffers     cached
+Mem:          7466       1604       5862          0         36       1309
+-/+ buffers/cache:        258       7208
+Swap:         1023          0       1023
+[root@ip-172-31-34-57 ~]# 
+
+
+[root@ip-172-31-34-57 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/xvda       9.9G  2.2G  7.2G  24% /
+none            3.7G     0  3.7G   0% /dev/shm
+[root@ip-172-31-34-57 ~]# 
+
+
+Step 1: Install Java
+First, you’ll follow a simple best practice: ensuring the list of available packages is up to date before installing anything new.
+
+yum -y update
+
+At this point, installing java is as simple as running just one command:
+
+yum -y install java
+
+
+[root@ip-172-31-34-57 ~]# java -version
+java version "1.7.0_65"
+OpenJDK Runtime Environment (rhel-2.5.1.2.el6_5-x86_64 u65-b17)
+OpenJDK 64-Bit Server VM (build 24.65-b04, mixed mode)
+[root@ip-172-31-34-57 ~]# 
+
+
+
+following instructions from  http://docs.datastax.com/en/datastax_enterprise/4.7/datastax_enterprise/install/installRHELdse.html
+Before installing DataStax Enterprise on RHEL OS 5.x, install the Extra Packages for Enterprise Linux (EPEL).
+EPEL contains important dependent packages that enable installation of Python 2.6.x that is required by DataStax Enterprise.
+
+64-bit RHEL and CentOS 5.x
+
+# wget http://download.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+
+
+
+# rpm -ivh epel-release-5-4.noarch.rpm
+
+create a file
+
+
